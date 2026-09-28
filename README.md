@@ -1,36 +1,24 @@
-# kuaishanwuliao
-## 媒体网站说明
+# 山海有回声
 
-适合手机扫码访问的静态媒体网页，可直接通过 GitHub Pages 发布。当前没有上传实际媒体。
+博医计划 · 实践纪实互动影像库
 
-## 发布
+主网站：https://veritas123-s.github.io/kuaishanwuliao/
 
-将本目录文件放入目标 GitHub 仓库，在 Settings → Pages 中选择 Deploy from a branch，再选择存放文件的分支及 /(root)。以 GitHub 实际显示并成功访问的网址作为二维码目标，勿使用仓库代码浏览地址。
+## 图文来源和对应规则
 
-目标网站：https://veritas123-s.github.io/kuaishanwuliao/ 。发布状态以 GitHub Pages 和实际访问结果为准。
+全部 18 张图片及 50 段配文来自《实践部分快闪图片+文字.docx》。编号 001—018 严格按原文图片顺序，每张图片归属的配文为其后至下一张图片前的全部非空文本，保持原字句和段落顺序。标题、主题及导航属于网站编辑内容。实践报告只为网站导览文案提供背景，不作为子页配文来源。
 
-## 添加内容
+## 页面与二维码
 
-1. 将媒体上传到 media/。
-2. 编辑 media.json 的 entries 数组，例如：
+- 000：主入口，沿用原网站地址，旧版主站二维码继续有效。
+- 001—018：stories/001/ 至 stories/018/，各自可直接扫码访问。
+- 原 ?id=001 形式入口可跳转至对应页面；没有对应编号时显示提示。
+- 网站包含主题筛选、文字搜索、图片放大、复制链接和前后篇导航。
+- 图片经等比例压缩，用于网页展示；原 Word 不变。media/thumbs/ 为目录缩略图。
+- 完整图片位于 media/photos/；图文记录保存在 media.json；每篇正文直接写入 HTML，停用 JavaScript 仍可阅读。
 
-```json
-{
-  "title": "我们的影像馆",
-  "entries": [
-    {"id": "0121", "type": "image", "title": "合影", "src": "media/photo.jpg", "alt": "合影", "description": "在这里填写图片介绍。"},
-    {"id": "0122", "type": "audio", "title": "声音记录", "src": "media/audio.mp3"},
-    {"id": "0123", "type": "video", "title": "视频记录", "src": "media/video.mp4"}
-  ]
-}
-```
+## 发布和维护
 
-以上文件名为格式示例，需实际上传对应文件后再使用。每个 id 唯一且固定，以字符串保存前导零。照片建议 JPG/PNG/WebP；音频建议 MP3；视频建议浏览器兼容的 MP4（H.264 视频、AAC 音频）。播放器不自动播放。
+GitHub Pages 从 main 根目录发布。修改已生成页面时同步维护 media.json；新增图文沿用后续编号，不改已印刷二维码的路径。不要删除或改名既有 stories/编号/。
 
-二维码可以指向首页，也可以指向“首页网址?id=0121”直达某条内容。印刷后保持网址和 id 不变，更新相同条目的媒体即可。附图中的二维码只是参考，并未复制或修改它们的目标。
-
-## 托管边界
-
-网页和媒体发布后可被公众访问，请只上传准备公开的素材。较大视频不宜直接存入 Git 仓库；可在 src 填写公开且稳定的 HTTPS 媒体直链。不要使用会过期的临时下载链接。
-
-官方发布说明：https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+所有网页素材均用于公开浏览，不收集访客信息，无需登录。
