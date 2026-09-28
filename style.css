@@ -17,3 +17,22 @@ body,h1,h2,h3,h4,p,a,button,input,small,span,figcaption,footer strong{font-famil
 footer .institution-logos{width:180px}
 @media(max-width:640px){.site-header .institution-logos{width:130px}.brand-name{padding-left:12px}.brand small{font-size:9px}.brand{font-size:19px}.footer-identity{gap:16px}footer .institution-logos{width:130px}}
 @media(max-width:360px){.site-header .institution-logos{width:112px}.brand{gap:9px;font-size:17px}.brand-name{padding-left:9px}.brand small{font-size:8px}}
+@font-face{font-family:"Shanhai Song";src:url("media/fonts/shanhai-song.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+:root{font-family:"Shanhai Song",SimSun,"Songti SC",serif}
+@media(max-width:640px){
+  .filters button{min-height:44px;padding:10px 13px;font-size:14px}
+  .search input{min-height:46px;font-size:16px;min-width:0}
+  .search span{font-size:13px}
+  .story-actions a,.story-actions button{min-height:44px;display:inline-flex;align-items:center;font-size:14px}
+  .story-text p{font-size:17px;line-height:1.95}
+  .hero-intro{font-size:15px;line-height:1.9}
+  .card-body p{font-size:15px;line-height:1.8}
+  .hero-image figcaption{font-size:12px}
+  .story-heading h1{font-size:30px;overflow-wrap:anywhere}
+  .brand-name{min-width:0}
+  .brand small{font-size:9px}
+  #close-photo{min-width:80px;min-height:44px;top:6px}
+  dialog{padding-top:58px;max-width:100vw;max-height:100dvh}
+  dialog img{max-width:88vw;max-height:80dvh}
+}
+h1,h2,h3,.section-top h2,.closing h2,footer strong{font-family:inherit}

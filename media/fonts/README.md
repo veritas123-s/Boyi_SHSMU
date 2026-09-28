@@ -1,0 +1,1 @@
+Shanhai Song is a character subset of Noto Serif SC Regular, distributed under SIL Open Font License 1.1. Source: https://github.com/google/fonts/tree/main/ofl/notoserifsc . Copyright retained in OFL.txt and font metadata. It provides Song-style Chinese typography on phones without SimSun. The subset covers the current site; regenerate it when new characters are introduced.
