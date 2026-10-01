@@ -38,7 +38,7 @@ if (document.body.dataset.page === 'story') {
   const dialog = document.querySelector('#lightbox');
   const open = document.querySelector('.photo-open');
   if (typeof dialog.showModal === 'function') {
-    open.addEventListener('click', event => { event.preventDefault(); dialog.showModal(); });
+    open.addEventListener('click', event => { event.preventDefault(); dialog.querySelector('.original-image-link').href=open.href; dialog.showModal(); });
     document.querySelector('#close-photo').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   }

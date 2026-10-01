@@ -6,7 +6,7 @@ if(document.body.dataset.page==='intro'){
 const imageDialog=document.querySelector('#image-dialog');
 if(imageDialog && typeof imageDialog.showModal==='function'){
  document.querySelectorAll('.zoom-image').forEach(link=>link.addEventListener('click',event=>{
-  event.preventDefault();imageDialog.querySelector('img').src=link.href;
+  event.preventDefault();imageDialog.querySelector('img').src=link.href;imageDialog.querySelector('.original-image-link').href=link.href;
   imageDialog.querySelector('img').alt=link.querySelector('img').alt;
   imageDialog.querySelector('p').textContent=link.dataset.caption||'';imageDialog.showModal();
  }));

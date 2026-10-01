@@ -16,7 +16,9 @@
         "这场跨越多家医院的对话，让沉甸甸的医者担当在文字与光影间得以沉淀，也让青年医学生对“慈心仁术、胸怀家国”的含义有了更动人的切身体悟。"
       ],
       "type": "image",
-      "src": "media/photos/001.jpg"
+      "src": "media/photos/001.jpg",
+      "width": 1430,
+      "height": 1072
     },
     {
       "id": "002",
@@ -32,7 +34,9 @@
       ],
       "type": "image",
       "src": "media/photos/002.jpg",
-      "audio": "media/audio/002.m4a"
+      "audio": "media/audio/002.m4a",
+      "width": 1430,
+      "height": 953
     },
     {
       "id": "003",
@@ -46,7 +50,9 @@
         "同学们围在展台旁认真倾听、仔细观察。通过邓博士的讲解，大家了解到了数字建模与材料科学如何帮助外科医生解决复杂的临床难题，也对科技成果如何真正服务于患者有了更清晰的认识。"
       ],
       "type": "image",
-      "src": "media/photos/003.jpg"
+      "src": "media/photos/003.jpg",
+      "width": 1430,
+      "height": 953
     },
     {
       "id": "004",
@@ -62,7 +68,9 @@
       ],
       "type": "image",
       "src": "media/photos/004.jpg",
-      "audio": "media/audio/004.m4a"
+      "audio": "media/audio/004.m4a",
+      "width": 1430,
+      "height": 802
     },
     {
       "id": "005",
@@ -77,7 +85,9 @@
         "这场面对面的沟通，让大家摸到了基层医疗的真实脉搏，也对“科技如何切切实实造福患者”有了更具体的体会。"
       ],
       "type": "image",
-      "src": "media/photos/005.jpg"
+      "src": "media/photos/005.jpg",
+      "width": 1430,
+      "height": 953
     },
     {
       "id": "006",
@@ -93,7 +103,9 @@
       ],
       "type": "image",
       "src": "media/photos/006.jpg",
-      "audio": "media/audio/006.m4a"
+      "audio": "media/audio/006.m4a",
+      "width": 1430,
+      "height": 953
     },
     {
       "id": "007",
@@ -106,7 +118,9 @@
         "这些实打实的举措和生动的故事也感染了坐在对面的“博医计划”实践团成员们，他们放下笔记本，围绕运行逻辑和现实挑战频频发问。在这一问一答之间，“校地合作”真真切切地变成了一场双向奔赴的思维碰撞。"
       ],
       "type": "image",
-      "src": "media/photos/007.jpg"
+      "src": "media/photos/007.jpg",
+      "width": 613,
+      "height": 409
     },
     {
       "id": "008",
@@ -119,7 +133,9 @@
       ],
       "type": "image",
       "src": "media/photos/008.jpg",
-      "audio": "media/audio/008.m4a"
+      "audio": "media/audio/008.m4a",
+      "width": 615,
+      "height": 410
     },
     {
       "id": "009",
@@ -132,7 +148,9 @@
         "这里没有讲稿也没有长桌，只有两张小矮凳，实践团成员挨着村民坐下，像邻家晚辈一样拉起了家常，时而递上问卷，时而侧耳倾听。就是在这种最朴素的“唠嗑”中，那些冷冰冰的医疗数据被一点点补全了：村里常住老人的岁数、平时头疼脑热去哪看病、慢性病有没有人管。没有高大上的术语，只有最真实的健康诉求。对这群医学生而言，基层的民生百态不再停留在书本里，而是化作了一页页详实的问卷，更成了他们心中沉甸甸的牵挂。"
       ],
       "type": "image",
-      "src": "media/photos/009.jpg"
+      "src": "media/photos/009.jpg",
+      "width": 662,
+      "height": 441
     },
     {
       "id": "010",
@@ -146,7 +164,9 @@
       ],
       "type": "image",
       "src": "media/photos/010.jpg",
-      "audio": "media/audio/010.m4a"
+      "audio": "media/audio/010.m4a",
+      "width": 663,
+      "height": 442
     },
     {
       "id": "011",
@@ -160,7 +180,9 @@
         "这堂特殊的党课，没有庄严的礼堂，只有这面墙和一位朴实坚守的基层带头人。站在这里，他们真切地感受到，好日子不是等来的，是要靠自己的双手去奋斗出来的。"
       ],
       "type": "image",
-      "src": "media/photos/011.jpg"
+      "src": "media/photos/011.jpg",
+      "width": 661,
+      "height": 372
     },
     {
       "id": "012",
@@ -175,7 +197,9 @@
       ],
       "type": "image",
       "src": "media/photos/012.jpg",
-      "audio": "media/audio/012.m4a"
+      "audio": "media/audio/012.m4a",
+      "width": 631,
+      "height": 421
     },
     {
       "id": "013",
@@ -189,7 +213,9 @@
         "整节课以信息传递为主，辅以简单的互动练习，希望能在有限的时间内，为他们提供一些可操作的心理调适工具。"
       ],
       "type": "image",
-      "src": "media/photos/013.jpg"
+      "src": "media/photos/013.jpg",
+      "width": 5184,
+      "height": 3456
     },
     {
       "id": "014",
@@ -203,7 +229,9 @@
       ],
       "type": "image",
       "src": "media/photos/014.jpg",
-      "audio": "media/audio/014.m4a"
+      "audio": "media/audio/014.m4a",
+      "width": 5472,
+      "height": 3648
     },
     {
       "id": "015",
@@ -216,7 +244,9 @@
         "印象最深的是展墙上那幅六霍起义示意图，红色箭头从六安、霍山、金寨各处发端，密密麻麻地汇向几个中心区域，又向四面八方延伸出去。箭头但每一根都在往前、往更远的地方走。对着那些弯弯绕绕的红色线条，能感受到那股从各处聚拢又向外铺开的力量——不是一条笔直的大路，而是千百条小路踩出来的洪流。走出展厅，门口的阳光很亮，回头再看那座灰砖建筑，觉得它替那些没有留下姓名的人，守住了一段不该被忘记的日子。"
       ],
       "type": "image",
-      "src": "media/photos/015.jpg"
+      "src": "media/photos/015.jpg",
+      "width": 864,
+      "height": 576
     },
     {
       "id": "016",
@@ -231,7 +261,9 @@
       ],
       "type": "image",
       "src": "media/photos/016.jpg",
-      "audio": "media/audio/016.m4a"
+      "audio": "media/audio/016.m4a",
+      "width": 5184,
+      "height": 3456
     },
     {
       "id": "017",
@@ -245,7 +277,9 @@
         "回想进站的那一刻，我们都还未体会到，这趟从上海驶出的列车，会把我们带到那么多真实而厚重的人和事面前。"
       ],
       "type": "image",
-      "src": "media/photos/017.jpg"
+      "src": "media/photos/017.png",
+      "width": 1785,
+      "height": 1035
     },
     {
       "id": "018",
@@ -259,7 +293,9 @@
       ],
       "type": "image",
       "src": "media/photos/018.jpg",
-      "audio": "media/audio/018.m4a"
+      "audio": "media/audio/018.m4a",
+      "width": 4032,
+      "height": 3024
     }
   ]
 }
