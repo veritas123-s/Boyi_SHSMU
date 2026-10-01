@@ -56,3 +56,9 @@ if (document.body.dataset.page === 'story') {
     });
   }
 }
+
+for (const player of document.querySelectorAll('audio')) {
+  player.addEventListener('play', () => { for (const other of document.querySelectorAll('audio')) if (other !== player) other.pause(); });
+  player.addEventListener('error', () => { const note = player.parentElement.querySelector('.audio-error'); if (note) note.hidden = false; });
+  player.querySelector('source')?.addEventListener('error', () => { const note = player.parentElement.querySelector('.audio-error'); if (note) note.hidden = false; });
+}
