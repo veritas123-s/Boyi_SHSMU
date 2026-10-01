@@ -1,0 +1,1 @@
+Shanhai WenKai is a character subset of LXGW WenKai Lite Regular. Source: https://github.com/lxgw/LxgwWenKai-Lite . Licensed under SIL OFL 1.1; license and original copyright preserved in WenKai-OFL.txt. Renamed for redistribution.
