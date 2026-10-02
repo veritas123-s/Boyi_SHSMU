@@ -1,4 +1,22 @@
 'use strict';
+if(document.body.dataset.page==='practice'&&(new URLSearchParams(location.search).has('word')||/^#reflection/.test(location.hash))){
+ location.replace('../reflections/'+location.search+location.hash);
+}
+const timeline=document.querySelector('.timeline-section');
+if(timeline){
+ const tabs=[...timeline.querySelectorAll('[role=tab]')];
+ function show(tab){
+  tabs.forEach(item=>{const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;document.getElementById(item.getAttribute('aria-controls')).hidden=!selected;});
+  tab.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+ }
+ tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>show(tab));
+  tab.addEventListener('keydown',event=>{
+   const next={ArrowRight:(index+1)%tabs.length,ArrowLeft:(index+tabs.length-1)%tabs.length,Home:0,End:tabs.length-1}[event.key];
+   if(next!==undefined){event.preventDefault();show(tabs[next]);tabs[next].focus({preventScroll:true});}
+  });
+ });
+}
 if(document.body.dataset.page==='intro'){
  const oldId=new URLSearchParams(location.search).get('id');
  if(oldId!==null && /^0*(?:[1-9]|1[0-8])$/.test(oldId))location.replace(`stories/${String(Number(oldId)).padStart(3,'0')}/`);
