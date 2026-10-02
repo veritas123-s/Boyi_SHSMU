@@ -19,7 +19,8 @@
       "src": "media/photos/001.jpg",
       "width": 1430,
       "height": 1072,
-      "dateLabel": "行前 · 上海"
+      "dateLabel": "行前 · 上海",
+      "audio": "media/audio/001.m4a"
     },
     {
       "id": "017",
@@ -36,7 +37,8 @@
       "src": "media/photos/017.png",
       "width": 1785,
       "height": 1035,
-      "dateLabel": "07.15"
+      "dateLabel": "07.15",
+      "audio": "media/audio/017.m4a"
     },
     {
       "id": "004",
@@ -73,7 +75,8 @@
       "src": "media/photos/005.jpg",
       "width": 1430,
       "height": 953,
-      "dateLabel": "07.16"
+      "dateLabel": "07.16",
+      "audio": "media/audio/005.m4a"
     },
     {
       "id": "006",
@@ -124,7 +127,8 @@
       "src": "media/photos/007.jpg",
       "width": 613,
       "height": 409,
-      "dateLabel": "07.17"
+      "dateLabel": "07.17",
+      "audio": "media/audio/007.m4a"
     },
     {
       "id": "016",
@@ -158,7 +162,8 @@
       "src": "media/photos/009.jpg",
       "width": 662,
       "height": 441,
-      "dateLabel": "07.18"
+      "dateLabel": "07.18",
+      "audio": "media/audio/009.m4a"
     },
     {
       "id": "010",
@@ -192,7 +197,8 @@
       "src": "media/photos/011.jpg",
       "width": 661,
       "height": 372,
-      "dateLabel": "07.18"
+      "dateLabel": "07.18",
+      "audio": "media/audio/011.m4a"
     },
     {
       "id": "015",
@@ -208,7 +214,8 @@
       "src": "media/photos/015.jpg",
       "width": 864,
       "height": 576,
-      "dateLabel": "07.19"
+      "dateLabel": "07.19",
+      "audio": "media/audio/015.m4a"
     },
     {
       "id": "018",
@@ -260,7 +267,8 @@
       "src": "media/photos/013.jpg",
       "width": 5184,
       "height": 3456,
-      "dateLabel": "07.21"
+      "dateLabel": "07.21",
+      "audio": "media/audio/013.m4a"
     },
     {
       "id": "014",
@@ -313,7 +321,8 @@
       "src": "media/photos/003.jpg",
       "width": 1430,
       "height": 953,
-      "dateLabel": "07.23"
+      "dateLabel": "07.23",
+      "audio": "media/audio/003.m4a"
     }
   ]
 }
