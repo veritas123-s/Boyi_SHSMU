@@ -15,6 +15,8 @@
  }
  function showResult(){
   const scored=scoreQuiz(data.questions,answers),portrait=data.results[scored.type];stage.hidden=true;$('#quiz-intro').hidden=true;result.hidden=false;
+  const roleIndex='INTJ INTP ENTJ ENTP INFJ INFP ENFJ ENFP ISTJ ISFJ ESTJ ESFJ ISTP ISFP ESTP ESFP'.split(' ').indexOf(scored.type);
+  $('#quiz-character').style.backgroundPosition=`${roleIndex%4*100/3}% ${Math.floor(roleIndex/4)*100/3}%`;$('#quiz-character').setAttribute('aria-label',`${scored.type} 医学角色`);
   $('#quiz-type').textContent=scored.type;$('#quiz-result-title').textContent=portrait.title;$('#quiz-description').textContent=portrait.description;$('#quiz-invitation').textContent=portrait.invitation;
   const labels={ie:['独处蓄力 · I','交流蓄力 · E'],ns:['具体经验 · S','联想探索 · N'],tf:['逻辑分析 · T','感受协调 · F'],pj:['计划推进 · J','灵活展开 · P']};
   const dimensions=$('#quiz-dimensions');dimensions.replaceChildren();
