@@ -6,9 +6,9 @@ askForm.addEventListener('submit',async event=>{
  event.preventDefault();if(askButton.disabled||!askForm.reportValidity())return;
  const text=question.value.trim();if(!text){question.focus();return;}
  askButton.disabled=true;askButton.textContent='正在思考…';askStatus.textContent='';answer.hidden=true;
- const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),55000);
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),85000);
  try{
-  const response=await fetch('https://shanhai-boyi-feedback.david-zhang-2922.chatgpt.site/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({question:text,website:new FormData(askForm).get('website')})});
+  const response=await fetch('https://122.51.44.155/boyi/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({question:text,website:new FormData(askForm).get('website')})});
   const data=await response.json();if(!response.ok||typeof data.answer!=='string')throw new Error(data.error||'这次没有收到回答，请稍后重试。');
   answer.querySelector('.answer-text').textContent=data.answer;
   const list=answer.querySelector('ul');list.replaceChildren();
