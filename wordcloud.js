@@ -4,7 +4,7 @@
  const words=[...cloud.querySelectorAll('.cloud-word')],pause=document.querySelector('#pause-cloud'),pick=document.querySelector('#pick-cloud');
  const invite=document.querySelector('#cloud-invite-text'),topic=document.querySelector('#echo-topic'),input=document.querySelector('.echo-form textarea[name=message]');
  const reduced=matchMedia('(prefers-reduced-motion:reduce)');let paused=false;
- words.forEach((word,i)=>{word.style.setProperty('--cloud-duration',`${7+i%5}s`);word.style.setProperty('--cloud-delay',`${-(i*1.37)%9}s`);word.style.setProperty('--cloud-direction',i%2?'reverse':'normal');});
+ words.forEach((word,i)=>{word.style.setProperty('--cloud-duration',`${4.6+(i%5)*.45}s`);word.style.setProperty('--cloud-delay',`${-(i*1.37)%9}s`);word.style.setProperty('--cloud-direction',i%2?'reverse':'normal');});
  function syncMotion(){cloud.dataset.paused=String(paused||document.hidden||reduced.matches);pause.disabled=reduced.matches;pause.textContent=reduced.matches?'已减少动态效果':paused?'继续浮动':'暂停浮动';pause.setAttribute('aria-pressed',String(paused));}
  pause.addEventListener('click',()=>{paused=!paused;syncMotion();});
  reduced.addEventListener('change',syncMotion);document.addEventListener('visibilitychange',syncMotion);syncMotion();
