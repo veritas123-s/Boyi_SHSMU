@@ -12,7 +12,11 @@ askForm.addEventListener('submit',async event=>{
   const data=await response.json();if(!response.ok||typeof data.answer!=='string')throw new Error(data.error||'这次没有收到回答，请稍后重试。');
   answer.querySelector('.answer-text').textContent=data.answer;
   const list=answer.querySelector('ul');list.replaceChildren();
-  for(const source of data.sources||[]){const url=new URL(source.url);if(url.origin!=='https://veritas123-s.github.io'||!url.pathname.startsWith('/Boyi_SHSMU/'))continue;const item=document.createElement('li'),link=document.createElement('a');link.href=url.href;link.textContent=`[${source.number}] ${source.title}`;item.append(link);list.append(item);}
+  for(const source of data.sources||[]){
+   const item=document.createElement('li'),label=`[${source.number}] ${source.title}`;
+   if(source.source_type==='report'||source.source_type==='editorial_note'){item.textContent=label;list.append(item);continue;}
+   try{const url=new URL(source.url);if(url.origin!=='https://veritas123-s.github.io'||!url.pathname.startsWith('/Boyi_SHSMU/'))continue;const link=document.createElement('a');link.href=url.href;link.textContent=label;item.append(link);list.append(item);}catch{continue;}
+  }
   answer.querySelector('.answer-sources').hidden=!list.children.length;answer.hidden=false;answer.focus({preventScroll:true});answer.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
  }catch(error){askStatus.textContent=error.name==='AbortError'?'回答等待较久，请稍后重试。':error instanceof TypeError?'网络暂时不可用，请稍后重试。':error.message;}
  finally{clearTimeout(timer);askButton.disabled=false;askButton.textContent='问一问';}
