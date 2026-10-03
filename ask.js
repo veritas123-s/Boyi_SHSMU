@@ -12,6 +12,7 @@ function showProgress(progress){
 waiting.querySelector('.wait-cancel').addEventListener('click',()=>{cancelled=true;pendingController?.abort();});
 document.querySelectorAll('.ask-prompts button').forEach(button=>button.addEventListener('click',()=>{question.value=button.textContent;question.focus();}));
 async function readAnswer(response){
+ if(response.status===204)return {suppressed:true};
  if(!response.ok||!response.headers.get('content-type')?.includes('application/x-ndjson')){
   const data=await response.json();if(!response.ok||typeof data.answer!=='string')throw new Error(data.error||'这次没有收到回答，请稍后重试。');return data;
  }
@@ -22,11 +23,12 @@ async function readAnswer(response){
   if(event.type==='progress')showProgress(event);
   if(event.type==='error')throw new Error(event.error||'这次未能生成回答，请稍后重试。');
   if(event.type==='done')result=event;
+  if(event.type==='suppressed')result={suppressed:true};
  }
  try{
   while(true){const {done,value}=await reader.read();buffer+=done?decoder.decode():decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n'))>=0){receive(buffer.slice(0,end));buffer=buffer.slice(end+1);}if(done){receive(buffer);break;}}
  }finally{reader.releaseLock();}
- if(typeof result?.answer!=='string')throw new Error('回答传输中断，请重试。');return result;
+ if(!result?.suppressed&&typeof result?.answer!=='string')throw new Error('回答传输中断，请重试。');return result;
 }
 askForm.addEventListener('submit',async event=>{
  event.preventDefault();if(askButton.disabled||!askForm.reportValidity())return;
@@ -39,6 +41,7 @@ askForm.addEventListener('submit',async event=>{
  try{
   const response=await fetch('https://122.51.44.155/boyi/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({question:text,website:new FormData(askForm).get('website'),stream_status:true})});
   const data=await readAnswer(response);
+  if(data.suppressed){answer.querySelector('.answer-text').textContent='';answer.querySelector('ul').replaceChildren();return;}
   answer.querySelector('.answer-text').textContent=data.answer;
   const list=answer.querySelector('ul');list.replaceChildren();
   for(const source of data.sources||[]){
