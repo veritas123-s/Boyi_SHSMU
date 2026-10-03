@@ -20,5 +20,5 @@
  document.addEventListener('play',event=>{if(event.target instanceof HTMLMediaElement&&event.target!==audio&&!audio.paused){pausedByUser=true;audio.pause();}},true);
  button.addEventListener('click',()=>{if(!audio.paused){pausedByUser=true;audio.pause();}else{pausedByUser=false;if(audio.error)audio.load();play();}save();});
  window.addEventListener('pagehide',save);audio.addEventListener('timeupdate',()=>{if(Math.floor(audio.currentTime)%5===0)save();});
- render();if(!pausedByUser){audio.autoplay=true;play();}
+ render();if(!pausedByUser&&document.body.dataset.page!=='podcast'){audio.autoplay=true;play();}
 })();
