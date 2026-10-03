@@ -52,23 +52,23 @@ if(cloud){
  words.forEach(button=>button.addEventListener('click',()=>{select(button.dataset.word);result.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});}));
  reset.addEventListener('click',()=>select(''));
  function layout(){
-  const width=cloud.clientWidth,height=width<500?560:390;cloud.style.height=height+'px';cloud.classList.add('cloud-ready');
+  const width=cloud.clientWidth,height=width<500?640:440;cloud.style.height=height+'px';cloud.classList.add('cloud-ready');
   const placed=[];let failed=false;
   for(let i=0;i<words.length;i++){
    const button=words[i],count=Number(button.dataset.count);
    button.style.fontSize=(width<500?15:18)+Math.min(32,Math.sqrt(count)*7)+'px';
    const w=button.offsetWidth,h=button.offsetHeight;let position=null;
-   for(let step=0;step<1800;step++){
+   for(let step=0;step<6000;step++){
     const t=step*.27,r=Math.sqrt(step)*6.2;
     const x=width/2+Math.cos(t+i*.9)*r*1.3-w/2,y=height/2+Math.sin(t+i*.9)*r*.95-h/2;
-    if(x<3||y<3||x+w>width-3||y+h>height-3)continue;
-    if(placed.every(p=>x+w+2<p.x||x>p.x+p.w+2||y+h+2<p.y||y>p.y+p.h+2)){position={x,y,w,h};break;}
+    if(x<6||y<6||x+w>width-6||y+h>height-6)continue;
+    if(placed.every(p=>x+w+8<p.x||x>p.x+p.w+8||y+h+8<p.y||y>p.y+p.h+8)){position={x,y,w,h};break;}
    }
    if(!position){failed=true;break;}placed.push(position);button.style.left=position.x+'px';button.style.top=position.y+'px';
   }
   if(failed){cloud.classList.remove('cloud-ready');cloud.style.height='auto';words.forEach(b=>{b.style.left='';b.style.top='';});}
  }
  document.fonts.ready.then(layout);
- let timer;new ResizeObserver(()=>{clearTimeout(timer);timer=setTimeout(layout,100);}).observe(cloud);
+ let timer,lastWidth=0;new ResizeObserver(()=>{const width=cloud.clientWidth;if(width===lastWidth)return;lastWidth=width;clearTimeout(timer);timer=setTimeout(layout,100);}).observe(cloud);
  const initial=new URLSearchParams(location.search).get('word');if(initial&&words.some(b=>b.dataset.word===initial))select(initial);
 }
