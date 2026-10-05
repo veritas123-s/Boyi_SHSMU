@@ -126,6 +126,8 @@ async function init(){
     document.querySelectorAll('.group-filters button').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
     document.querySelectorAll('#all-types .type-card').forEach((card,i)=>card.hidden=button.dataset.group!=='all'&&data.profiles[i].group!==Number(button.dataset.group));
   });
+  if(!answeredCount())$('start').innerHTML='调出我的配方 <span aria-hidden="true">↗</span>';
+  $('start').disabled=false;
   if(location.hash==='#start')renderQuestion();
 }
 init();
