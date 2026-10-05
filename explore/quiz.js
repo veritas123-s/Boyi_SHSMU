@@ -1,4 +1,4 @@
-import {calculate, validAnswer, preference} from './scoring.js?v=20261005-path1';
+import {calculate, validAnswer, preference} from './scoring.js?v=20261005-single1';
 
 const VERSION='20261005-path1', STORE='boyi-path-session-v1';
 const $=id=>document.getElementById(id);
@@ -70,9 +70,8 @@ function renderReview(message=''){
   $('review-list').querySelectorAll('button').forEach(b=>b.onclick=()=>{position=Number(b.dataset.question);renderQuestion();});
   $('review-message').textContent=message;$('review').focus({preventScroll:true});
 }
-function typeCard(p){return `<a class="type-card" href="types/${p.word.toLowerCase()}/" style="--accent:${p.color}"><img src="characters/${p.word}.webp" width="320" height="360" alt="${p.name}医学角色插画" loading="lazy"><span class="word">${p.word}</span><h3>${p.name}</h3><p>${escape(p.careers[0][1])}</p><span class="card-arrow" aria-hidden="true">↗</span></a>`;}
 function axesHtml(result){return `<section class="axis-section"><h2>你的四维配方</h2><div class="axis-grid">${data.axes.map((a,i)=>{
-  const s=result.scores[i], rounded=s.toFixed(1), label=s>=60?a.a:s<=40?a.b:'两端接近';
+  const s=result.scores[i], rounded=s.toFixed(1), label=result.code[i]===a.left?a.a:a.b;
   return `<div class="axis-card"><div class="axis-labels"><span>${a.left} · ${a.a}</span><span>${a.right} · ${a.b}</span></div><div class="axis-track" role="img" aria-label="${a.title}：${label}，左端方向指数${rounded}" style="--position:${100-s}%"><span></span></div><p class="axis-caption"><strong>${label}</strong> · ${preference(s)}<br>左端方向指数 ${rounded}/100 · ${result.counts[i]}题有效</p></div>`;
 }).join('')}</div></section>`;}
 function supplementalHtml(){
@@ -87,21 +86,15 @@ function evaluate(){
   const score=calculate(answers,data.questions,data.profiles);
   if(!score.valid){const short=data.axes.filter((a,i)=>score.counts[i]<4).map(a=>`${a.a}/${a.b}`);renderReview(`已答${score.answered}题。完整结果需要至少20道核心题，每维至少4题。${short.length?`请补充“${short.join('、')}”维度的相关题目。`:'再补几题就可以查看结果。'}`);return;}
   show('result');let content='';
-  if(score.mode==='single'){
-    const p=score.candidates[0];$('result').style.setProperty('--accent',p.color);
-    content=`<div class="result-feature"><div><p class="path-eyebrow">你的医途配方 · ${p.groupName}</p><div class="result-word">${p.word}</div><h1>${p.name}</h1><p class="profile-tag">${escape(p.tag)}</p><p>${escape(p.traits)}</p></div><img src="characters/${p.word}.webp" width="480" height="540" alt="${p.name}医学角色插画"></div>${axesHtml(score)}${supplementalHtml()}<div class="day-box"><span>工作的一天</span><p>${escape(p.routine)}</p></div>${fullProfile(p)}`;
-  } else {
-    $('result').style.setProperty('--accent','#157e78');
-    const intro=score.mode==='candidates'?`你的${score.mixed}个维度两端接近。可以先从下面${score.candidates.length}位搭子里，挑一个最想体验的。`:'你的兴趣分布比较均衡。先看看四个维度，再挑一条想亲自试试的路。';
-    content=`<div class="result-top"><p class="path-eyebrow">你的医途配方</p><h1>${score.mode==='candidates'?'这次，你有几种心动':'你的配方，还可以继续长'}</h1><p class="result-intro">${intro}</p></div>${axesHtml(score)}${supplementalHtml()}<section><h2>${score.mode==='candidates'?'与你相关的医途搭子':'16种道路，先从好奇的开始'}</h2><div class="type-grid">${(score.mode==='candidates'?score.candidates:data.profiles).map(typeCard).join('')}</div></section>`;
-  }
-  if(score.mode==='single'&&score.candidates[0].photoNote)content=content.replace('<figcaption>','<figcaption>'+escape(score.candidates[0].photoNote)+'<br>');
+  const p=score.candidates[0];$('result').style.setProperty('--accent',p.color);
+  content=`<div class="result-feature"><div><p class="path-eyebrow">你的医途配方 · ${p.groupName}</p><div class="result-word">${p.word}</div><h1>${p.name}</h1><p class="profile-tag">${escape(p.tag)}</p><p>${escape(p.traits)}</p></div><img src="characters/${p.word}.webp" width="480" height="540" alt="${p.name}医学角色插画"></div>${axesHtml(score)}${supplementalHtml()}<div class="day-box"><span>工作的一天</span><p>${escape(p.routine)}</p></div>${fullProfile(p)}`;
+  if(p.photoNote)content=content.replace('<figcaption>','<figcaption>'+escape(p.photoNote)+'<br>');
   $('result').innerHTML=content+`<div class="share-actions"><button id="edit-answers" class="btn quiet">查看 / 修改答案</button><button id="print-result" class="btn quiet">保存为PDF</button><button id="copy-result" class="btn primary">复制我的配方</button><button id="restart" class="text-button">重新开始</button></div><p id="share-message" class="share-message" role="status"></p><p class="method-note">工作偏好来自本次作答。把结果和实际体验、培养条件一起看，具体计分见<a href="about/">题目与计分</a>。</p>`;
   $('edit-answers').onclick=()=>renderReview();$('print-result').onclick=()=>window.print();
   $('copy-result').onclick=async()=>{
-    const names=score.mode==='single'?`${score.candidates[0].word} ${score.candidates[0].name}`:score.mode==='candidates'?score.candidates.map(p=>`${p.word} ${p.name}`).join(' / '):'四维兴趣探索';
+    const names=`${p.word} ${p.name}`;
     const lines=data.axes.map((a,i)=>`${a.a}/${a.b}：左端方向指数${score.scores[i].toFixed(1)}`);
-    const link=new URL(score.mode==='single'?`types/${score.candidates[0].word.toLowerCase()}/`:'./',location.href).href;
+    const link=new URL(`types/${p.word.toLowerCase()}/`,location.href).href;
     const text=`我的医途配方：${names}\n${lines.join('\n')}\n一起看看你的医途搭子：${link}`;
     try{await navigator.clipboard.writeText(text);$('share-message').textContent='已复制，可以发给同学一起聊聊。';}
     catch{$('share-message').textContent='可以长按下方文字复制。';const area=document.createElement('textarea');area.value=text;area.setAttribute('aria-label','我的配方分享文字');area.style.cssText='width:100%;min-height:140px;font-size:16px';$('share-message').after(area);area.select();}
