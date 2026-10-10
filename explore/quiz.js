@@ -1,6 +1,6 @@
-import {calculate, validAnswer, preference, percentages} from './scoring.js?v=20261011-medstudent1';
+import {calculate, validAnswer, preference, percentages} from './scoring.js?v=20261011-directions1';
 
-const VERSION='20261011-medstudent1', STORE='boyi-path-session-v1';
+const VERSION='20261011-directions1', STORE='boyi-path-session-v1';
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let data, position=0, answers={}, supplements={}, storageAvailable=true;
@@ -19,10 +19,17 @@ function cleanSupplement(q,values){
 function restore(){
   try {
     const raw=JSON.parse(sessionStorage.getItem(STORE)||'null');
-    if(!raw||raw.version!==VERSION)return;
+    if(!raw||![VERSION,'20261011-medstudent1'].includes(raw.version))return;
+    const previousVersion=raw.version!==VERSION;
     for(const q of data.questions)if(validAnswer(raw.answers?.[q.id]))answers[q.id]=raw.answers[q.id];
-    for(const q of data.supplements)supplements[q.id]=cleanSupplement(q,raw.supplements?.[q.id]);
+    for(const q of data.supplements){
+      const saved=raw.supplements?.[q.id];
+      // Earlier identity answers cannot identify the new study/work stage.
+      const migrated=previousVersion?(q.id===25?[]:(saved||[]).map(n=>n===3?q.exclusive[0]:n)):saved;
+      supplements[q.id]=cleanSupplement(q,migrated);
+    }
     position=Number.isInteger(raw.position)?Math.min(27,Math.max(0,raw.position)):0;
+    if(previousVersion&&position>=24)position=24;
   } catch { /* Corrupt or unavailable storage leaves a fresh in-memory session. */ }
 }
 function answeredCount(){return Object.keys(answers).length;}
@@ -31,7 +38,7 @@ function renderQuestion(){
   show('quiz');const q=current(), core=position<24;
   $('question-count').textContent=`${String(position+1).padStart(2,'0')} / 28 · ${core?'情境题':'补充题'}`;
   $('progress').value=position+1;
-  const hint=core?"凭兴趣单选，可跳过。":q.max===1?'选一个最像当前情况的回答。':q.max===2?'最多选两项，也可以先跳过。':`可以多选；“${q.choices[q.exclusive[0]]}”须单独选择。`;
+  const hint=core?"凭兴趣单选，可跳过。":q.max===1?'选一个最像当前情况的回答。':`最多选${q.max}项，也可以先跳过。${q.exclusive?.length?`“${q.choices[q.exclusive[0]]}”须单独选择。`:''}`;
   $('question-area').innerHTML=`<h1 id="question-title" tabindex="-1">${escape(q.prompt)}</h1><p class="question-hint">${hint}</p><div class="option-list" role="group" aria-labelledby="question-title">${q.choices.map((c,i)=>{
     const checked=core?answers[q.id]===i+1:(supplements[q.id]||[]).includes(i);
     return `<label class="option"><input type="${core||q.max===1?'radio':'checkbox'}" name="answer-${q.id}" value="${i}" ${checked?'checked':''}><span>${core?`<span class="letter">${'ABCD'[i]}</span>`:''}${escape(c)}</span></label>`;
@@ -78,10 +85,19 @@ function supplementalHtml(){
   const items=data.supplements.map(q=>({q,selected:(supplements[q.id]||[]).map(n=>q.choices[n])})).filter(x=>x.selected.length);
   if(!items.length)return '';
   const stage=(supplements[25]||[])[0];
-  const training=stage===0?'现在可以从教学病例、公开数据和一场工作访谈开始。':stage===1?'挑一个感兴趣的教学科室或实验室，跟着老师完成小任务。':stage===2||stage===3?'轮转时留意日常工作，把喜欢与吃力的环节记下来，再和带教聊聊。':'结合目标岗位的培养与录用要求，找团队讨论下一步训练。';
+  const trainingByStage=[
+    '先用课程、教学病例和公开科普认识各方向。',
+    '选一个感兴趣的科室或实验室，在老师指导下做小任务。',
+    '轮转时观察日常工作，把有兴趣和觉得吃力的环节记下来，再和带教聊聊。',
+    '结合现有临床经验，向目标科室了解培养与岗位要求。',
+    '结合课题和导师建议，了解临床研究、机制研究或医工方向的实际分工。',
+    '对照目标岗位要求，核对需要补充的训练与经验。',
+    '先从公开课程、科普和跨学科项目了解医学工作。'
+  ];
+  const training=trainingByStage[stage]||'结合自己的阶段和实际经历，向相关团队了解下一步训练要求。';
   return `<section class="supplement-result"><h2>把配方放进你的生活</h2>${items.map(({q,selected})=>`<p><strong>${q.id===25?'当前阶段':q.id===26?'已经体验':q.id===27?'选工作时在意':'想了解的方向'}：</strong>${escape(selected.join('、'))}</p>`).join('')}<p>${training}</p></section>`;
 }
-function placesHtml(p){return `<section class="profile-section type-places"><h2>可以优先了解的科室／行业方向</h2><div class="axis-grid">${p.places.map(x=>`<div class="axis-card"><h3>${escape(x.name)}</h3><p class="place-work">${escape(x.work)}</p></div>`).join('')}</div><p class="method-note">这里按工作特点提供探索线索，结合实际体验和培养要求再判断。</p>${p.places.some(x=>x.kind==='enterprise')?`<p class="method-note enterprise-declaration">${escape(data.enterpriseDeclaration)}</p>`:''}</section>`;}
+function placesHtml(p){return `<section class="profile-section type-places"><h2>可以优先了解的科室与工作方向</h2><div class="axis-grid">${p.places.map(x=>`<div class="axis-card"><h3>${escape(x.name)}</h3><p class="place-work">${escape(x.work)}</p></div>`).join('')}</div><p class="method-note">这里按工作特点提供探索线索，结合实际体验和培养要求再判断。研究岗位和研究所按方向列出，具体设置以各单位为准。</p>${p.places.some(x=>x.kind==='enterprise')?`<p class="method-note enterprise-declaration">${escape(data.enterpriseDeclaration)}</p>`:''}</section>`;}
 function fullProfile(p){return `${placesHtml(p)}<section class="profile-section"><h2>值得试试的职业道路</h2><div class="career-grid">${p.careers.map(([a,b,c])=>`<div class="career-card"><span>${escape(a)}</span><h3>${escape(b)}</h3><p><strong>了解重点：</strong>${escape(c)}</p></div>`).join('')}</div></section><section class="profile-section"><h2>认识一位职业榜样</h2><div class="person-block"><figure><a href="photos/${p.word}-original.jpg?v=${VERSION}" target="_blank" rel="noopener"><img src="photos/${p.word}.webp?v=${VERSION}" alt="${escape(p.person)}真实照片" width="640" height="800" loading="lazy"></a><figcaption>点击查看高清图 · <a href="credits/#${p.word}">照片来源与署名</a></figcaption></figure><div><p class="path-eyebrow">职业榜样</p><h3>${escape(p.person)}</h3><p>${escape(p.fact)}</p><a href="${p.source}" target="_blank" rel="noopener">了解人物故事 ↗</a></div></div></section><section class="profile-section"><h2>把喜欢，放进真实工作里</h2><p>${escape(p.friction)}</p><a href="types/${p.word.toLowerCase()}/" class="text-button">读完整的角色介绍 ↗</a></section>`;}
 function evaluate(){
   const score=calculate(answers,data.questions,data.profiles);
