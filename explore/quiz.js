@@ -1,6 +1,6 @@
-import {calculate, validAnswer, preference} from './scoring.js?v=20261005-single1';
+import {calculate, validAnswer, preference, percentages} from './scoring.js?v=20261010-pi-dual1';
 
-const VERSION='20261005-path1', STORE='boyi-path-session-v1';
+const VERSION='20261010-pi-dual1', STORE='boyi-path-session-v1';
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let data, position=0, answers={}, supplements={}, storageAvailable=true;
@@ -31,7 +31,7 @@ function renderQuestion(){
   show('quiz');const q=current(), core=position<24;
   $('question-count').textContent=`${String(position+1).padStart(2,'0')} / 28 · ${core?'情境题':'补充题'}`;
   $('progress').value=position+1;
-  const hint=core?'想想最近半年的自己，选更想做的那件事。':q.max===1?'选一个最像当前情况的回答。':q.max===2?'最多选两项，也可以先跳过。':'可以多选；“还没有”单独选择。';
+  const hint=core?"按兴趣选最接近自己的一项，不用考虑现在会不会做。没经历过的场景，可以设想一下。":q.max===1?'选一个最像当前情况的回答。':q.max===2?'最多选两项，也可以先跳过。':`可以多选；“${q.choices[q.exclusive[0]]}”须单独选择。`;
   $('question-area').innerHTML=`<h1 id="question-title" tabindex="-1">${escape(q.prompt)}</h1><p class="question-hint">${hint}</p><div class="option-list" role="group" aria-labelledby="question-title">${q.choices.map((c,i)=>{
     const checked=core?answers[q.id]===i+1:(supplements[q.id]||[]).includes(i);
     return `<label class="option"><input type="${core||q.max===1?'radio':'checkbox'}" name="answer-${q.id}" value="${i}" ${checked?'checked':''}><span>${core?`<span class="letter">${'ABCDE'[i]}</span>`:''}${escape(c)}</span></label>`;
@@ -71,31 +71,32 @@ function renderReview(message=''){
   $('review-message').textContent=message;$('review').focus({preventScroll:true});
 }
 function axesHtml(result){return `<section class="axis-section"><h2>你的四维配方</h2><div class="axis-grid">${data.axes.map((a,i)=>{
-  const s=result.scores[i], rounded=s.toFixed(1), label=result.code[i]===a.left?a.a:a.b;
-  return `<div class="axis-card"><div class="axis-labels"><span>${a.left} · ${a.a}</span><span>${a.right} · ${a.b}</span></div><div class="axis-track" role="img" aria-label="${a.title}：${label}，左端方向指数${rounded}" style="--position:${100-s}%"><span></span></div><p class="axis-caption"><strong>${label}</strong> · ${preference(s)}<br>左端方向指数 ${rounded}/100 · ${result.counts[i]}题有效</p></div>`;
-}).join('')}</div></section>`;}
+  const s=result.scores[i],[left,right]=percentages(s),label=result.code[i]===a.left?a.a:a.b;
+  return `<div class="axis-card"><div class="axis-labels"><span>${a.left} · ${a.a}<strong class="axis-percent">${left===null?'未作答':left+'%'}</strong></span><span>${a.right} · ${a.b}<strong class="axis-percent">${right===null?'未作答':right+'%'}</strong></span></div>${s===null?'':`<div class="axis-track" role="img" aria-label="${a.a} ${left}%，${a.b} ${right}%" style="--position:${100-s}%"><span></span></div>`}<p class="axis-caption">${s===null?'这个维度暂无作答。':`${label} · ${preference(s)}<br>${result.counts[i]}题已答`}</p></div>`;
+}).join('')}</div><p class="method-note">百分比表示本次已答题目的倾向得分。类型按完整精度计算。</p></section>`;}
 function supplementalHtml(){
   const items=data.supplements.map(q=>({q,selected:(supplements[q.id]||[]).map(n=>q.choices[n])})).filter(x=>x.selected.length);
   if(!items.length)return '';
   const stage=(supplements[25]||[])[0];
   const training=stage===0?'现在可以从教学病例、公开数据和一场工作访谈开始。':stage===1?'挑一个感兴趣的教学科室或实验室，跟着老师完成小任务。':stage===2||stage===3?'轮转时留意日常工作，把喜欢与吃力的环节记下来，再和带教聊聊。':'结合目标岗位的培养与录用要求，找团队讨论下一步训练。';
-  return `<section class="supplement-result"><h2>把配方放进你的生活</h2>${items.map(({q,selected})=>`<p><strong>${q.id===25?'当前阶段':q.id===26?'已经体验':q.id===27?'选工作时在意':'下个月想去'}：</strong>${escape(selected.join('、'))}</p>`).join('')}<p>${training}</p></section>`;
+  return `<section class="supplement-result"><h2>把配方放进你的生活</h2>${items.map(({q,selected})=>`<p><strong>${q.id===25?'当前阶段':q.id===26?'已经体验':q.id===27?'选工作时在意':'想了解的方向'}：</strong>${escape(selected.join('、'))}</p>`).join('')}<p>${training}</p></section>`;
 }
-function fullProfile(p){return `<section class="profile-section"><h2>值得试试的职业道路</h2><div class="career-grid">${p.careers.map(([a,b,c])=>`<div class="career-card"><span>${escape(a)}</span><h3>${escape(b)}</h3><p><strong>可以先练：</strong>${escape(c)}</p></div>`).join('')}</div></section><section class="profile-section"><h2>认识一位走过这条路的人</h2><div class="person-block"><figure><a href="photos/${p.word}-original.jpg" target="_blank" rel="noopener"><img src="photos/${p.word}.webp" alt="${escape(p.person)}真实照片" width="640" height="800" loading="lazy"></a><figcaption>点击查看高清图 · <a href="credits/#${p.word}">照片来源与署名</a></figcaption></figure><div><p class="path-eyebrow">职业榜样</p><h3>${escape(p.person)}</h3><p>${escape(p.fact)}</p><a href="${p.source}" target="_blank" rel="noopener">了解人物故事 ↗</a></div></div></section><section class="profile-section"><h2>把喜欢，放进真实工作里</h2><p>${escape(p.friction)}</p><div class="try-box"><span>下个月，先试这一件</span><p>${escape(p.task)}</p></div><p class="adjacent">也可以看看：${escape(p.adjacent)}</p><a href="types/${p.word.toLowerCase()}/" class="text-button">读完整的角色介绍 ↗</a></section>`;}
+function placesHtml(p){return `<section class="profile-section type-places"><h2>可以优先了解的科室／单位</h2><div class="axis-grid">${p.places.map(x=>{const inst=data.placeInstitutions.find(i=>i.id===x.institution_id);return `<div class="axis-card"><h3>${escape(x.name)}</h3><p class="place-institution">${escape(inst.name)}<br>${inst.kind==='hospital'?'交大附属 · 三级甲等':'企业单位 · 仅供参考'}</p><p class="place-work">${escape(x.work)}</p><p class="axis-caption">${x.source_ids.map(id=>{const s=data.placeSources.find(q=>q.id===id);return `<a href="${escape(s.url)}" target="_blank" rel="noopener">${escape(s.title)} ↗</a>`;}).join('<br>')}</p></div>`;}).join('')}</div><p class="method-note">这里按工作特点提供探索线索，结合实际体验和培养要求再判断。</p>${p.places.some(x=>data.placeInstitutions.find(i=>i.id===x.institution_id).kind==='enterprise')?`<p class="method-note enterprise-declaration">${escape(data.enterpriseDeclaration)}</p>`:''}</section>`;}
+function fullProfile(p){return `${placesHtml(p)}<section class="profile-section"><h2>值得试试的职业道路</h2><div class="career-grid">${p.careers.map(([a,b,c])=>`<div class="career-card"><span>${escape(a)}</span><h3>${escape(b)}</h3><p><strong>了解重点：</strong>${escape(c)}</p></div>`).join('')}</div></section><section class="profile-section"><h2>认识一位职业榜样</h2><div class="person-block"><figure><a href="photos/${p.word}-original.jpg?v=${VERSION}" target="_blank" rel="noopener"><img src="photos/${p.word}.webp?v=${VERSION}" alt="${escape(p.person)}真实照片" width="640" height="800" loading="lazy"></a><figcaption>点击查看高清图 · <a href="credits/#${p.word}">照片来源与署名</a></figcaption></figure><div><p class="path-eyebrow">职业榜样</p><h3>${escape(p.person)}</h3><p>${escape(p.fact)}</p><a href="${p.source}" target="_blank" rel="noopener">了解人物故事 ↗</a></div></div></section><section class="profile-section"><h2>把喜欢，放进真实工作里</h2><p>${escape(p.friction)}</p><div class="try-box"><span>下个月，先试这一件</span><p>${escape(p.task)}</p></div><a href="types/${p.word.toLowerCase()}/" class="text-button">读完整的角色介绍 ↗</a></section>`;}
 function evaluate(){
   const score=calculate(answers,data.questions,data.profiles);
-  if(!score.valid){const short=data.axes.filter((a,i)=>score.counts[i]<4).map(a=>`${a.a}/${a.b}`);renderReview(`已答${score.answered}题。完整结果需要至少20道核心题，每维至少4题。${short.length?`请补充“${short.join('、')}”维度的相关题目。`:'再补几题就可以查看结果。'}`);return;}
   show('result');let content='';
+  const resultNote=score.mode==='default'?'全部核心题已跳过，本次默认配方为RUSH。':score.answered<24?`核心题已答${score.answered}/24，本次配方依据已答题目生成。${score.counts.includes(0)?'未答维度使用默认设置，暂不显示百分比。':''}`:'';
   const p=score.candidates[0];$('result').style.setProperty('--accent',p.color);
-  content=`<div class="result-feature"><div><p class="path-eyebrow">你的医途配方 · ${p.groupName}</p><div class="result-word">${p.word}</div><h1>${p.name}</h1><p class="profile-tag">${escape(p.tag)}</p><p>${escape(p.traits)}</p></div><img src="characters/${p.word}.webp" width="480" height="540" alt="${p.name}医学角色插画"></div>${axesHtml(score)}${supplementalHtml()}<div class="day-box"><span>工作的一天</span><p>${escape(p.routine)}</p></div>${fullProfile(p)}`;
+  content=`${resultNote?`<p class="method-note result-note">${resultNote}</p>`:''}<div class="result-feature"><div><p class="path-eyebrow">你的医途配方 · ${p.groupName}</p><div class="result-word">${p.word}</div><h1>${p.name}</h1><p class="profile-tag">${escape(p.tag)}</p><p>${escape(p.traits)}</p></div><img src="characters/${p.word}.webp" width="480" height="540" alt="${p.name}医学角色插画"></div>${axesHtml(score)}${supplementalHtml()}<div class="day-box"><span>工作的一天</span><p>${escape(p.routine)}</p></div>${fullProfile(p)}`;
   if(p.photoNote)content=content.replace('<figcaption>','<figcaption>'+escape(p.photoNote)+'<br>');
-  $('result').innerHTML=content+`<div class="share-actions"><button id="edit-answers" class="btn quiet">查看 / 修改答案</button><button id="print-result" class="btn quiet">保存为PDF</button><button id="copy-result" class="btn primary">复制我的配方</button><button id="restart" class="text-button">重新开始</button></div><p id="share-message" class="share-message" role="status"></p><p class="method-note">工作偏好来自本次作答。把结果和实际体验、培养条件一起看，具体计分见<a href="about/">题目与计分</a>。</p>`;
+  $('result').innerHTML=content+`<div class="share-actions"><button id="edit-answers" class="btn quiet">查看 / 修改答案</button><button id="print-result" class="btn quiet">保存为PDF</button><button id="copy-result" class="btn primary">复制我的配方</button><button id="restart" class="text-button">重新开始</button></div><p id="share-message" class="share-message" role="status"></p><p class="method-note">将本次配方和实际体验、培养条件一起看，具体计分见<a href="about/">题目与计分</a>。</p>`;
   $('edit-answers').onclick=()=>renderReview();$('print-result').onclick=()=>window.print();
   $('copy-result').onclick=async()=>{
     const names=`${p.word} ${p.name}`;
-    const lines=data.axes.map((a,i)=>`${a.a}/${a.b}：左端方向指数${score.scores[i].toFixed(1)}`);
+    const lines=data.axes.map((a,i)=>{const [left,right]=percentages(score.scores[i]);return left===null?`${a.a}/${a.b}：未作答`:`${a.a} ${left}% / ${a.b} ${right}%`;});
     const link=new URL(`types/${p.word.toLowerCase()}/`,location.href).href;
-    const text=`我的医途配方：${names}\n${lines.join('\n')}\n一起看看你的医途搭子：${link}`;
+    const text=`我的医途配方：${names}\n${resultNote?resultNote+'\n':''}${lines.join('\n')}\n一起看看你的医途搭子：${link}`;
     try{await navigator.clipboard.writeText(text);$('share-message').textContent='已复制，可以发给同学一起聊聊。';}
     catch{$('share-message').textContent='可以长按下方文字复制。';const area=document.createElement('textarea');area.value=text;area.setAttribute('aria-label','我的配方分享文字');area.style.cssText='width:100%;min-height:140px;font-size:16px';$('share-message').after(area);area.select();}
   };
