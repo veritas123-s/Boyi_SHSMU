@@ -1,5 +1,5 @@
 {
-  "version": "20261011-four1",
+  "version": "20261011-medstudent1",
   "axes": [
     {
       "left": "P",
@@ -65,7 +65,6 @@
       "person": "Cicely Saunders 西西莉·桑德斯",
       "fact": "创建St Christopher’s Hospice，推动现代安宁疗护与整体照护。",
       "why": "",
-      "task": "用教学病例和同学做一次角色沟通，按给定清单写一份后续支持安排，再请老师核对。",
       "icon": "heart",
       "setting": "院内主场",
       "color": "#157e78",
@@ -74,13 +73,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "肿瘤综合诊治中心",
-          "institution_id": "renji",
-          "work": "关注怎样和一位患者沟通镇痛、营养与照护需要，再由团队落实安排。",
-          "source_ids": [
-            "R4",
-            "U6"
-          ]
+          "name": "肿瘤科",
+          "kind": "department",
+          "work": "关注怎样和一位患者沟通镇痛、营养与照护需要，再由团队落实安排。"
         }
       ]
     },
@@ -114,7 +109,6 @@
       "person": "林巧稚",
       "fact": "长期从事妇产科临床、研究与妇幼保健工作，曾任协和医院妇产科主任。",
       "why": "",
-      "task": "拿一份老师提供的教学说明，和同学做一次模拟讲解：同学扮演使用者，你负责讲解。听听对方哪里没理解，试改一张说明卡，再请对方用自己的话说说卡片的意思，记录下一次还想怎么改。",
       "icon": "heart",
       "setting": "院内主场",
       "color": "#157e78",
@@ -123,13 +117,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "Health Communications Group",
-          "institution_id": "iqvia",
-          "work": "关注给具体使用者看的医学说明怎样编写和修改。",
-          "source_ids": [
-            "C3",
-            "C4"
-          ]
+          "name": "医学传播类企业",
+          "kind": "enterprise",
+          "work": "关注给具体使用者看的医学说明怎样编写和修改。"
         }
       ]
     },
@@ -163,7 +153,6 @@
       "person": "吴孟超",
       "fact": "中国科学院院士、肝胆外科专家，长期开展肝脏外科研究与手术工作。",
       "why": "",
-      "task": "在老师指导下，用老师提供的缝合练习垫练一种指定缝法。按给定步骤操作，照检查表核对，再重练遗漏的步骤。",
       "icon": "tool",
       "setting": "院内主场",
       "color": "#157e78",
@@ -173,11 +162,8 @@
       "places": [
         {
           "name": "麻醉科",
-          "institution_id": "ruijin",
-          "work": "了解麻醉如何服务一位患者，关注操作步骤和核对要求。",
-          "source_ids": [
-            "R1"
-          ]
+          "kind": "department",
+          "work": "了解麻醉如何服务一位患者，关注操作步骤和核对要求。"
         }
       ]
     },
@@ -211,7 +197,6 @@
       "person": "Peter Safar 彼得·萨法",
       "fact": "参与发展现代心肺复苏技术，创立复苏研究中心，推动急救与重症医学。",
       "why": "",
-      "task": "在老师提供的练习笔上试装几种海绵握柄，设想要帮一位握笔不便的虚构使用者。请同学体验握持和书写，记下反馈，再决定下一轮换哪种握柄、怎么试。",
       "icon": "tool",
       "setting": "院内主场",
       "color": "#157e78",
@@ -221,12 +206,8 @@
       "places": [
         {
           "name": "康复医学科",
-          "institution_id": "sixth",
-          "work": "关注一位患者的功能评估结果，了解康复设备怎样随恢复情况调整使用。",
-          "source_ids": [
-            "R3",
-            "U1"
-          ]
+          "kind": "department",
+          "work": "关注一位患者的功能评估结果，了解康复设备怎样随恢复情况调整使用。"
         }
       ]
     },
@@ -260,7 +241,6 @@
       "person": "Rita Charon 丽塔·卡伦",
       "fact": "内科医师、文学学者，与同事共同创立叙事医学领域。",
       "why": "",
-      "task": "用教学病例做一次按提纲进行的角色访谈，写出时间线、可能解释和仍需核对的地方。",
       "icon": "book",
       "setting": "院内主场",
       "color": "#7352a3",
@@ -270,11 +250,8 @@
       "places": [
         {
           "name": "神经内科",
-          "institution_id": "ruijin",
-          "work": "关注怎样询问一位患者的病史，按线索核对症状出现和变化的经过。",
-          "source_ids": [
-            "R1"
-          ]
+          "kind": "department",
+          "work": "关注怎样询问一位患者的病史，按线索核对症状出现和变化的经过。"
         }
       ]
     },
@@ -308,7 +285,6 @@
       "person": "Aaron Beck 亚伦·贝克",
       "fact": "精神科医师，发展认知治疗并推动相关研究。",
       "why": "",
-      "task": "和同学用一个虚构的散步计划做角色访谈，问清计划怎样开始、后来哪些情况影响了它。根据回答补问，整理两种可能解释及还缺的线索，不把角色回答当成真实研究证据。",
       "icon": "book",
       "setting": "院内主场",
       "color": "#7352a3",
@@ -317,13 +293,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "心境障碍科",
-          "institution_id": "smhc",
-          "work": "关注怎样通过交谈了解一位患者的心境变化，随新线索继续追问原因。",
-          "source_ids": [
-            "R5",
-            "U10"
-          ]
+          "name": "精神科",
+          "kind": "department",
+          "work": "关注怎样通过交谈了解一位患者的心境变化，随新线索继续追问原因。"
         }
       ]
     },
@@ -357,7 +329,6 @@
       "person": "Wilhelm Röntgen 威廉·伦琴",
       "fact": "物理学家，发现X射线，推动医学影像技术的发展。",
       "why": "",
-      "task": "用老师提供的教学影像和判读清单分析一个病例，写出两种解释、支持依据和待核对点。",
       "icon": "lens",
       "setting": "院内主场",
       "color": "#7352a3",
@@ -367,12 +338,8 @@
       "places": [
         {
           "name": "病理科",
-          "institution_id": "sixth",
-          "work": "关注按判读步骤分析一个病例的病理材料，核对不同解释的依据。",
-          "source_ids": [
-            "R3",
-            "U2"
-          ]
+          "kind": "department",
+          "work": "关注按判读步骤分析一个病例的病理材料，核对不同解释的依据。"
         }
       ]
     },
@@ -406,7 +373,6 @@
       "person": "Barry Marshall 巴里·马歇尔",
       "fact": "与Robin Warren研究幽门螺杆菌及其在胃炎、消化性溃疡中的作用，2005年获诺贝尔奖。",
       "why": "",
-      "task": "选一个公开教学病例，用给定资料列出两种可能解释，再写出哪些新线索会让你调整解释或改变下一步分析。",
       "icon": "bridge",
       "setting": "院内主场",
       "color": "#7352a3",
@@ -416,12 +382,8 @@
       "places": [
         {
           "name": "临床研究中心",
-          "institution_id": "renji",
-          "work": "关注新技术研究中一位患者的病程与检查线索，了解后续怎样查证。",
-          "source_ids": [
-            "R4",
-            "U7"
-          ]
+          "kind": "department",
+          "work": "关注新技术研究中一位患者的病程与检查线索，了解后续怎样查证。"
         }
       ]
     },
@@ -455,7 +417,6 @@
       "person": "Donald Berwick 唐纳德·伯威克",
       "fact": "IHI共同创立人，推动医疗质量、患者安全与系统改善。",
       "why": "",
-      "task": "为一个社团活动开一次分工讨论，按给定流程写清负责人、交接内容和完成确认方式。",
       "icon": "team",
       "setting": "院内主场",
       "color": "#b97924",
@@ -464,12 +425,9 @@
       "photoNote": "伯威克（中间站立）在医疗质量活动上发言。",
       "places": [
         {
-          "name": "临床技能模拟培训中心",
-          "institution_id": "ruijin",
-          "work": "关注怎样按既定模拟场景组织团队沟通与协作练习。",
-          "source_ids": [
-            "R1"
-          ]
+          "name": "教学管理科",
+          "kind": "department",
+          "work": "关注怎样按既定模拟场景组织团队沟通与协作练习。"
         }
       ]
     },
@@ -503,7 +461,6 @@
       "person": "伍连德",
       "fact": "组织东北鼠疫防治，并推动公共卫生与防疫体系建设。",
       "why": "",
-      "task": "用审核过的教学内容和同学试办一场模拟健康活动，根据参与反馈调整流程，再向老师说明修改理由。",
       "icon": "team",
       "setting": "院内主场",
       "color": "#b97924",
@@ -512,12 +469,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "高血压健康教育中心",
-          "institution_id": "ruijin",
-          "work": "关注健康教育活动怎样组织，听取参与者反馈后调整活动安排。",
-          "source_ids": [
-            "R1"
-          ]
+          "name": "健康管理科",
+          "kind": "department",
+          "work": "关注健康教育活动怎样组织，听取参与者反馈后调整活动安排。"
         }
       ]
     },
@@ -551,7 +505,6 @@
       "person": "Frances Oldham Kelsey 弗朗西斯·奥尔德姆·凯尔西",
       "fact": "FDA医学审查员，因安全证据不足未批准沙利度胺上市申请。",
       "why": "",
-      "task": "用一批虚构服务记录和老师给的规则做核查，整理待处理清单及交接记录，不作真实医疗判断。",
       "icon": "shield",
       "setting": "延伸道路",
       "color": "#b97924",
@@ -561,12 +514,8 @@
       "places": [
         {
           "name": "医学检验科",
-          "institution_id": "sixth",
-          "work": "关注按规范核对检验记录，让检验流程顺利运转。",
-          "source_ids": [
-            "R3",
-            "U2"
-          ]
+          "kind": "department",
+          "work": "关注按规范核对检验记录，让检验流程顺利运转。"
         }
       ]
     },
@@ -600,7 +549,6 @@
       "person": "Willem Kolff 威廉·科尔夫",
       "fact": "开发人工肾，为血液透析的发展作出关键贡献。",
       "why": "",
-      "task": "用纸面或软件做一个课程资料查找原型，请同学试用，按反馈改一版，不接入真实医疗服务。",
       "icon": "tool",
       "setting": "延伸道路",
       "color": "#b97924",
@@ -609,12 +557,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "微创医疗机器人",
-          "institution_id": "microport",
-          "work": "关注面向一类使用者的手术机器人功能开发与改进。",
-          "source_ids": [
-            "C1"
-          ]
+          "name": "医疗机器人类企业",
+          "kind": "enterprise",
+          "work": "关注面向一类使用者的手术机器人功能开发与改进。"
         }
       ]
     },
@@ -645,25 +590,20 @@
           "研究对象转为学习者群体，需要补充教育理论与评价方法。"
         ]
       ],
-      "person": "Carl Sagan 卡尔·萨根",
-      "fact": "参与宇宙生命相关研究，并以书籍和电视等方式开展科学传播。",
+      "person": "Atul Gawande 阿图·葛文德",
+      "fact": "外科医师、公共卫生研究者与医学作家，通过写作讨论患者照护和治疗选择，并参与推动手术安全改进。",
       "why": "",
-      "task": "围绕一份公开教学说明按提纲组织同学讨论，记录共同误解，写出可能原因和仍需核对的证据。",
       "icon": "chat",
       "setting": "延伸道路",
       "color": "#3265a7",
       "groupName": "证据与发现",
-      "source": "https://astrobiology.nasa.gov/resources/heroes/",
+      "source": "https://atulgawande.com/about/",
       "photoNote": "",
       "places": [
         {
-          "name": "Patient Centered Solutions",
-          "institution_id": "iqvia",
-          "work": "关注按提纲访谈不同患者，比较就医体验中的共同困难。",
-          "source_ids": [
-            "C3",
-            "C4"
-          ]
+          "name": "患者体验研究类企业",
+          "kind": "enterprise",
+          "work": "关注按提纲访谈不同患者，比较就医体验中的共同困难。"
         }
       ]
     },
@@ -697,7 +637,6 @@
       "person": "Peter Piot 彼得·皮奥特",
       "fact": "研究感染性疾病，曾任UNAIDS创始执行主任，开展全球健康与政策工作。",
       "why": "",
-      "task": "用虚构服务案例和同学扮演不同参与者，随回答调整提问，整理两种解释及各自需要补充的证据。",
       "icon": "map",
       "setting": "院内主场",
       "color": "#3265a7",
@@ -706,15 +645,9 @@
       "photoNote": "2006年，皮奥特（左）与印度总理辛格会面。",
       "places": [
         {
-          "name": "医院管理研究所",
-          "institution_id": "sixth",
-          "work": "关注通过交流比较医院服务问题的原因，随新线索补充研究问题。",
-          "source_ids": [
-            "R3",
-            "U3",
-            "U4",
-            "U5"
-          ]
+          "name": "医务科",
+          "kind": "department",
+          "work": "关注通过交流比较医院服务问题的原因，随新线索补充研究问题。"
         }
       ]
     },
@@ -748,7 +681,6 @@
       "person": "Fei-Fei Li 李飞飞",
       "fact": "从事计算机视觉与AI医疗研究，关注用环境智能支持医疗照护。",
       "why": "",
-      "task": "用老师提供的教学数据和分析表，按预定方案研究模型对某类虚构患者反复出错的原因，记录依据、仍不能确定的解释和结论适用的范围。",
       "icon": "bars",
       "setting": "院内主场",
       "secret": false,
@@ -758,12 +690,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "上海联影智能科技股份有限公司",
-          "institution_id": "uii",
-          "work": "关注医学影像算法的研究与验证，按方案比较不同使用情境的表现。",
-          "source_ids": [
-            "C2"
-          ]
+          "name": "医学影像AI类企业",
+          "kind": "enterprise",
+          "work": "关注医学影像算法的研究与验证，按方案比较不同使用情境的表现。"
         }
       ]
     },
@@ -797,7 +726,6 @@
       "person": "Karl Deisseroth 卡尔·戴瑟罗斯",
       "fact": "斯坦福教授，受过医学与科研训练，仍从事精神科临床；用光遗传学工具研究神经环路与脑功能，与Peter Hegemann和Georg Nagel共同获2026年诺贝尔生理学或医学奖。",
       "why": "",
-      "task": "用老师给的教学材料列出两种机制解释，设计纸面对照，写出不同结果会怎样影响下一步，包括不支持假设的结果。",
       "icon": "flask",
       "setting": "院内主场",
       "color": "#3265a7",
@@ -806,12 +734,9 @@
       "photoNote": "",
       "places": [
         {
-          "name": "上海血液学研究所",
-          "institution_id": "ruijin",
-          "work": "关注血液学研究中的实验与数据，跟着结果继续比较解释。",
-          "source_ids": [
-            "R1"
-          ]
+          "name": "血液科",
+          "kind": "department",
+          "work": "关注血液学研究中的实验与数据，跟着结果继续比较解释。"
         }
       ]
     }
@@ -821,12 +746,12 @@
       "id": 1,
       "axis": 0,
       "forward": true,
-      "prompt": "朋友说医院难找路，你想问些什么？",
+      "prompt": "学习糖尿病，你想了解哪类问题？",
       "choices": [
-        "他在哪儿走错了",
-        "他怎么找到诊室",
-        "哪些标识不好懂",
-        "大家常在哪迷路"
+        "一位患者的血糖变化",
+        "他的并发症发展",
+        "不同人群的患病差异",
+        "社区筛查的覆盖情况"
       ]
     },
     {
@@ -845,264 +770,264 @@
       "id": 3,
       "axis": 2,
       "forward": true,
-      "prompt": "社区办健康活动，你想帮什么？",
+      "prompt": "吸入用药宣教练习，你想做什么？",
       "choices": [
-        "带大家互相认识",
-        "主持现场交流",
-        "制作报名页面",
-        "剪辑活动视频"
+        "向同学解释使用步骤",
+        "和同学讨论用药顾虑",
+        "用教具演示吸入操作",
+        "制作装置操作图"
       ]
     },
     {
       "id": 4,
       "axis": 3,
       "forward": true,
-      "prompt": "周末和朋友出门，你喜欢怎样安排？",
+      "prompt": "病例讨论课，你愿意接哪种任务？",
       "choices": [
-        "按约好的行程走",
-        "选好几个必去地点",
-        "到了再找地方逛",
-        "随走随看往哪去"
+        "按提纲汇报病例",
+        "完成指定鉴别表",
+        "自选病例讨论点",
+        "围绕疑点展开讨论"
       ]
     },
     {
       "id": 5,
       "axis": 0,
       "forward": true,
-      "prompt": "群里在聊快递丢件，你想了解什么？",
+      "prompt": "药物安全课上，你想追踪什么？",
       "choices": [
-        "一个人的找件经过",
-        "他遇到了什么麻烦",
-        "哪种包裹容易丢",
-        "大家丢件有啥共性"
+        "一例药疹的发生经过",
+        "患者停药后的变化",
+        "哪类人更易出现药疹",
+        "药疹报告的分布变化"
       ]
     },
     {
       "id": 6,
       "axis": 1,
       "forward": true,
-      "prompt": "用手机记录步数，你想做什么？",
+      "prompt": "缝合技能教学中，你想做什么？",
       "choices": [
-        "走一圈试着记录",
-        "设个每日步数目标",
-        "查它怎样认出走路",
-        "找出哪些动作会数错"
+        "在模型上练打结",
+        "按示范练缝合",
+        "了解伤口愈合机制",
+        "查缝线受力的原理"
       ]
     },
     {
       "id": 7,
       "axis": 2,
       "forward": true,
-      "prompt": "家人新买计步手环，你想帮什么？",
+      "prompt": "模拟问诊课，你想承担什么？",
       "choices": [
-        "问家人想记录什么",
-        "跟家人讲怎么用",
-        "设置久坐提醒",
-        "连接手环和手机"
+        "追问症状变化",
+        "了解就诊顾虑",
+        "标记录音中的症状",
+        "试用电子问诊表"
       ]
     },
     {
       "id": 8,
       "axis": 3,
       "forward": true,
-      "prompt": "整理自己的房间，你想怎么摆东西？",
+      "prompt": "做解剖复习图，你愿意接哪种任务？",
       "choices": [
-        "照原来的位置摆",
-        "按分好的区域放",
-        "试着换几处位置",
-        "边摆边想新放法"
+        "标注指定血管走行",
+        "按模板整理神经分支",
+        "自选结构比较关系",
+        "自定主题绘制图解"
       ]
     },
     {
       "id": 9,
       "axis": 0,
       "forward": true,
-      "prompt": "读到一篇康复报道，你想接着看什么？",
+      "prompt": "学习骨折康复，你想了解什么？",
       "choices": [
-        "一个人的康复经过",
-        "他回家后的生活",
-        "这类人常见的难处",
-        "这类人的恢复情况"
+        "一位患者的活动恢复",
+        "他回家后的康复安排",
+        "不同人群的恢复差异",
+        "社区康复服务的覆盖"
       ]
     },
     {
       "id": 10,
       "axis": 1,
       "forward": true,
-      "prompt": "看完睡眠科普，你想接着做什么？",
+      "prompt": "睡眠医学课后，你想继续做什么？",
       "choices": [
-        "设好睡前提醒",
-        "试试睡前放下手机",
-        "查缺觉为何会犯困",
-        "了解做梦是怎么回事"
+        "用案例练睡眠评估",
+        "练习制定作息建议",
+        "了解睡眠节律调控",
+        "研究失眠的发生机制"
       ]
     },
     {
       "id": 11,
       "axis": 2,
       "forward": true,
-      "prompt": "和朋友翻旅行照，你想接着做什么？",
+      "prompt": "解剖小组互教，你想做什么？",
       "choices": [
-        "聊聊照片背后故事",
-        "问问哪张最想留",
-        "用软件调照片颜色",
-        "把照片拼成相册"
+        "和同学讨论易混结构",
+        "向同学讲解结构关系",
+        "标注三维解剖模型",
+        "制作结构对照图"
       ]
     },
     {
       "id": 12,
       "axis": 3,
       "forward": true,
-      "prompt": "写一篇游记，你想怎样动笔？",
+      "prompt": "医学数据课上，你愿意接哪种任务？",
       "choices": [
-        "按提纲往下写",
-        "列出要写的几件事",
-        "挑一段经历试着写",
-        "想到哪段写哪段"
+        "按清单清理数据",
+        "计算指定随访指标",
+        "从异常值提出问题",
+        "尝试不同分析方法"
       ]
     },
     {
       "id": 13,
       "axis": 0,
       "forward": false,
-      "prompt": "听朋友聊陪诊经历，你想接着问什么？",
+      "prompt": "看教学用感染资料，你想分析什么？",
       "choices": [
-        "大家陪诊常遇啥麻烦",
-        "哪些人常需要陪诊",
-        "他这次怎么安排的",
-        "他遇到了什么麻烦"
+        "病区感染率的变化",
+        "感染在各病区的分布",
+        "一例患者的感染经过",
+        "他的治疗后恢复情况"
       ]
     },
     {
       "id": 14,
       "axis": 1,
       "forward": false,
-      "prompt": "手机突然耗电快，你想先做些什么？",
+      "prompt": "心电图教学中，你想做什么？",
       "choices": [
-        "查查耗电的原因",
-        "看各应用耗电记录",
-        "关掉后台试一试",
-        "先开省电模式"
+        "研究心律失常机制",
+        "了解波形产生原理",
+        "用例图练辨认心律",
+        "按案例练测量间期"
       ]
     },
     {
       "id": 15,
       "axis": 2,
       "forward": false,
-      "prompt": "社区要放健康短片，你想帮什么？",
+      "prompt": "练习病例交接，你愿意负责什么？",
       "choices": [
-        "给短片加字幕",
-        "调试播放设备",
-        "主持观众交流",
-        "采访观众感受"
+        "整理检验趋势图",
+        "制作病程时间轴",
+        "口头交代病情变化",
+        "回应同学的交接提问"
       ]
     },
     {
       "id": 16,
       "axis": 3,
       "forward": false,
-      "prompt": "逛一家陌生书店，你喜欢怎么逛？",
+      "prompt": "医学工程设计课，你愿意接哪种任务？",
       "choices": [
-        "边逛边决定去哪",
-        "有趣的书架就停留",
-        "先挑几个书架逛",
-        "按分类一排排逛"
+        "自选临床需求做设计",
+        "试做原型寻找用途",
+        "按图制作教学模型",
+        "按清单测试教学装置"
       ]
     },
     {
       "id": 17,
       "axis": 0,
       "forward": false,
-      "prompt": "陪家人挂号，你想了解什么？",
+      "prompt": "了解门诊复诊，你想研究什么？",
       "choices": [
-        "各时段的排队人数",
-        "窗口怎样安排人手",
-        "家人挂号跑了几趟",
-        "家人哪一步没弄懂"
+        "预约名额怎样分配",
+        "转诊流程如何衔接",
+        "一位患者的复诊经历",
+        "他的病情怎样被跟进"
       ]
     },
     {
       "id": 18,
       "axis": 1,
       "forward": false,
-      "prompt": "蛋糕没烤好，你想接着做些什么？",
+      "prompt": "药理教学实验，你想参与哪部分？",
       "choices": [
-        "查查没烤好的原因",
-        "看看受热有啥影响",
-        "调个温度再烤一次",
-        "换个现成配方来做"
+        "了解药物作用靶点",
+        "探究剂量效应原理",
+        "按教学方案配药液",
+        "练习记录给药反应"
       ]
     },
     {
       "id": 19,
       "axis": 2,
       "forward": false,
-      "prompt": "家人准备去体检，你想帮什么？",
+      "prompt": "模拟康复评估，你想做什么？",
       "choices": [
-        "手机保存预约单",
-        "设置出门提醒",
-        "向前台询问流程",
-        "听家人说担心啥"
+        "用模型练关节测量",
+        "分析示例步态数据",
+        "访谈模拟患者",
+        "商量日常活动目标"
       ]
     },
     {
       "id": 20,
       "axis": 3,
       "forward": false,
-      "prompt": "出去散步时，你喜欢怎么选路线？",
+      "prompt": "医学文献作业，你愿意接哪种任务？",
       "choices": [
-        "看到岔路就换条走",
-        "遇到好看的地方拐去",
-        "先选定要去的地方",
-        "沿着定好的路线走"
+        "自选争议整理证据",
+        "寻找可继续研究的问题",
+        "按表提取疗效数据",
+        "按清单核对研究方法"
       ]
     },
     {
       "id": 21,
       "axis": 0,
       "forward": false,
-      "prompt": "看到社区助老报道，你想了解什么？",
+      "prompt": "读一项临床研究，你想细看什么？",
       "choices": [
-        "社区有多少人受益",
-        "哪些老人用过服务",
-        "一位老人的使用感受",
-        "这位老人生活变化"
+        "总体疗效的差异",
+        "各亚组的不良反应",
+        "一位受试者的症状变化",
+        "他的后续随访记录"
       ]
     },
     {
       "id": 22,
       "axis": 1,
       "forward": false,
-      "prompt": "盆栽叶子黄了，你想接着做什么？",
+      "prompt": "检验医学课上，你想参与什么？",
       "choices": [
-        "查查叶子发黄原因",
-        "看看光照有啥影响",
-        "换个位置养几天",
-        "照养护说明调整"
+        "探究试剂显色机制",
+        "研究干扰物的影响",
+        "用教学样本练检测",
+        "按质控流程练校准"
       ]
     },
     {
       "id": 23,
       "axis": 2,
       "forward": false,
-      "prompt": "朋友开始每天散步，你想帮什么？",
+      "prompt": "模拟流调训练，你想负责什么？",
       "choices": [
-        "设置手机计步",
-        "画步数变化图",
-        "商量散步安排",
-        "听他聊散步感受"
+        "用软件整理接触记录",
+        "绘制接触关系图",
+        "访谈模拟病例",
+        "协调小组核对信息"
       ]
     },
     {
       "id": 24,
       "axis": 3,
       "forward": false,
-      "prompt": "画张送人的贺卡，你想怎样开始？",
+      "prompt": "健康干预方案作业，你愿意接哪种任务？",
       "choices": [
-        "边画边想画什么",
-        "试画几笔找个样式",
-        "选好图案再下笔",
-        "照着样图一步步画"
+        "自选健康问题做方案",
+        "从案例寻找干预切口",
+        "按提纲拟戒烟方案",
+        "按模板写防跌倒计划"
       ]
     }
   ],
@@ -1161,187 +1086,7 @@
       ]
     }
   ],
-  "placeSources": [
-    {
-      "id": "R1",
-      "title": "交大医学院：附属瑞金医院",
-      "url": "https://www.shsmu.edu.cn/ylfw/fsyy1/fsrjyy1.htm"
-    },
-    {
-      "id": "R2",
-      "title": "交大医学院：附属第九人民医院",
-      "url": "https://www.shsmu.edu.cn/ylfw/fsyy1/fsdjrmyy.htm"
-    },
-    {
-      "id": "R3",
-      "title": "交大医学院：附属第六人民医院",
-      "url": "https://www.shsmu.edu.cn/ylfw/fsyy1/fsdlrmyy.htm"
-    },
-    {
-      "id": "R4",
-      "title": "仁济医院：医院概况",
-      "url": "https://www.renji.com/en/article/list/11"
-    },
-    {
-      "id": "R5",
-      "title": "精神卫生中心：临床药师培训招生公告",
-      "url": "https://www.smhc.org.cn/xwzx/gg/46.htm"
-    },
-    {
-      "id": "U1",
-      "title": "上海六院：康复医学科",
-      "url": "https://www.6thhosp.com/Content/News/10247"
-    },
-    {
-      "id": "U2",
-      "title": "上海六院：科室与职能部门",
-      "url": "https://www.6thhosp.com/Content/News/3009"
-    },
-    {
-      "id": "U3",
-      "title": "上海六院：医院管理研究所",
-      "url": "https://www.6thhosp.com/Content/News/8710"
-    },
-    {
-      "id": "U4",
-      "title": "上海六院：2025年医院管理研修班",
-      "url": "https://www.6thhosp.com/Content/News/9771"
-    },
-    {
-      "id": "U5",
-      "title": "上海六院：临床研究方法学培训",
-      "url": "https://6thhosp.com/Content/News/9217"
-    },
-    {
-      "id": "U6",
-      "title": "仁济医院：肿瘤综合诊治中心",
-      "url": "https://www.renji.com/gh/article/detail/dc13839732094a7ab06571195a2e7139"
-    },
-    {
-      "id": "U7",
-      "title": "仁济医院：临床研究中心",
-      "url": "https://cci.renji.com/clinical-renji/en/"
-    },
-    {
-      "id": "U8",
-      "title": "仁济医院：医学研究伦理委员会",
-      "url": "https://www.renji.com/gh/article/list/07/05/06"
-    },
-    {
-      "id": "U9",
-      "title": "仁济医院：伦理审查申请流程",
-      "url": "https://www.renji.com/article/detail/8f68a91f55d94f6ea22982ecf6cd4e51"
-    },
-    {
-      "id": "U10",
-      "title": "交大学报：精神卫生中心心境障碍科介绍",
-      "url": "https://xuebao.shsmu.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=9812"
-    },
-    {
-      "id": "C1",
-      "title": "微创医疗机器人：产品与研发方向",
-      "url": "https://microport.com/healthcare-professional/surgical-robots"
-    },
-    {
-      "id": "C2",
-      "title": "联影智能：关于我们",
-      "url": "https://www.uii-ai.com/aboutus.html"
-    },
-    {
-      "id": "C3",
-      "title": "艾昆纬：患者体验研究团队",
-      "url": "https://www.iqvia.com/en-gb/solutions/research-and-development/consulting/patient-centered-solutions"
-    },
-    {
-      "id": "C4",
-      "title": "艾昆纬：健康传播团队",
-      "url": "https://www.iqvia.com/fr-be/solutions/real-world-evidence/iqvia-health-communications-group"
-    }
-  ],
-  "placeInstitutions": [
-    {
-      "id": "ruijin",
-      "name": "上海交通大学医学院附属瑞金医院",
-      "kind": "hospital",
-      "grade": "三级甲等",
-      "affiliation": "上海交通大学医学院附属",
-      "qualification_source_ids": [
-        "R1"
-      ]
-    },
-    {
-      "id": "ninth",
-      "name": "上海交通大学医学院附属第九人民医院",
-      "kind": "hospital",
-      "grade": "三级甲等",
-      "affiliation": "上海交通大学医学院附属",
-      "qualification_source_ids": [
-        "R2"
-      ]
-    },
-    {
-      "id": "sixth",
-      "name": "上海交通大学医学院附属第六人民医院",
-      "kind": "hospital",
-      "grade": "三级甲等",
-      "affiliation": "上海交通大学医学院附属",
-      "qualification_source_ids": [
-        "R3"
-      ]
-    },
-    {
-      "id": "renji",
-      "name": "上海交通大学医学院附属仁济医院",
-      "kind": "hospital",
-      "grade": "三级甲等",
-      "affiliation": "上海交通大学医学院附属",
-      "qualification_source_ids": [
-        "R4"
-      ]
-    },
-    {
-      "id": "smhc",
-      "name": "上海交通大学医学院附属精神卫生中心",
-      "kind": "hospital",
-      "grade": "三级甲等",
-      "affiliation": "上海交通大学医学院附属",
-      "qualification_source_ids": [
-        "R5"
-      ]
-    },
-    {
-      "id": "microport",
-      "name": "微创医疗机器人",
-      "kind": "enterprise",
-      "grade": "",
-      "affiliation": "",
-      "qualification_source_ids": [
-        "C1"
-      ]
-    },
-    {
-      "id": "uii",
-      "name": "上海联影智能科技股份有限公司",
-      "kind": "enterprise",
-      "grade": "",
-      "affiliation": "",
-      "qualification_source_ids": [
-        "C2"
-      ]
-    },
-    {
-      "id": "iqvia",
-      "name": "艾昆纬（IQVIA）",
-      "kind": "enterprise",
-      "grade": "",
-      "affiliation": "",
-      "qualification_source_ids": [
-        "C3",
-        "C4"
-      ]
-    }
-  ],
-  "enterpriseDeclaration": "博医与所列企业无任何利益相关，企业单位仅供参考。",
+  "enterpriseDeclaration": "企业类别仅供职业探索参考，不涉及具体企业推荐或商业合作。",
   "scoringWeights": [
     1.004142,
     1.007321,
