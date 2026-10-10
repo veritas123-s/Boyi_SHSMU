@@ -1,6 +1,6 @@
-import {calculate, validAnswer, preference, percentages} from './scoring.js?v=20261010-pi-dual1';
+import {calculate, validAnswer, preference, percentages} from './scoring.js?v=20261011-four1';
 
-const VERSION='20261010-pi-dual1', STORE='boyi-path-session-v1';
+const VERSION='20261011-four1', STORE='boyi-path-session-v1';
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let data, position=0, answers={}, supplements={}, storageAvailable=true;
@@ -31,10 +31,10 @@ function renderQuestion(){
   show('quiz');const q=current(), core=position<24;
   $('question-count').textContent=`${String(position+1).padStart(2,'0')} / 28 · ${core?'情境题':'补充题'}`;
   $('progress').value=position+1;
-  const hint=core?"按兴趣选最接近自己的一项，不用考虑现在会不会做。没经历过的场景，可以设想一下。":q.max===1?'选一个最像当前情况的回答。':q.max===2?'最多选两项，也可以先跳过。':`可以多选；“${q.choices[q.exclusive[0]]}”须单独选择。`;
+  const hint=core?"凭兴趣单选，可跳过。":q.max===1?'选一个最像当前情况的回答。':q.max===2?'最多选两项，也可以先跳过。':`可以多选；“${q.choices[q.exclusive[0]]}”须单独选择。`;
   $('question-area').innerHTML=`<h1 id="question-title" tabindex="-1">${escape(q.prompt)}</h1><p class="question-hint">${hint}</p><div class="option-list" role="group" aria-labelledby="question-title">${q.choices.map((c,i)=>{
     const checked=core?answers[q.id]===i+1:(supplements[q.id]||[]).includes(i);
-    return `<label class="option"><input type="${core||q.max===1?'radio':'checkbox'}" name="answer-${q.id}" value="${i}" ${checked?'checked':''}><span>${core?`<span class="letter">${'ABCDE'[i]}</span>`:''}${escape(c)}</span></label>`;
+    return `<label class="option"><input type="${core||q.max===1?'radio':'checkbox'}" name="answer-${q.id}" value="${i}" ${checked?'checked':''}><span>${core?`<span class="letter">${'ABCD'[i]}</span>`:''}${escape(c)}</span></label>`;
   }).join('')}</div>`;
   $('previous').disabled=position===0;
   $('next').textContent=position===27?'看看我的配方':'下一题';

@@ -1,12 +1,12 @@
 export const AXIS_LETTERS = [['P','S'],['A','E'],['H','T'],['C','I']];
 // Fixed decimal weights are symmetric across the two ends of each question.
 export const WEIGHT_UNITS = [1004142,1007321,1002361,1006458,1003166,1006056,1001231,1003589,1007958,1003852,1005678,1000828,1004031,1005574,1008557,1002801,1006811,1008102,1001854,1004261,1005440,1008882,1001104,1004340];
-export function validAnswer(value) { return Number.isInteger(value) && value >= 1 && value <= 5; }
+export function validAnswer(value) { return Number.isInteger(value) && value >= 1 && value <= 4; }
 export function calculate(answers, questions, profiles) {
   const totals=[0,0,0,0],weights=[0,0,0,0],counts=[0,0,0,0],firstDirections=[0,0,0,0];
   for (const q of questions) {
     const value=answers[q.id];if(!validAnswer(value))continue;
-    const direction=(q.forward?1:-1)*(3-value),weight=WEIGHT_UNITS[q.id-1];
+    const direction=(q.forward?1:-1)*([2,1,-1,-2][value-1]),weight=WEIGHT_UNITS[q.id-1];
     if(!Number.isInteger(weight))throw new Error('Missing question weight');
     totals[q.axis]+=direction*weight;weights[q.axis]+=weight;counts[q.axis]++;
     if(!firstDirections[q.axis]&&direction)firstDirections[q.axis]=direction;
